@@ -1,12 +1,11 @@
 package com.lzp.simple
 
 import android.os.Bundle
-import android.support.animation.DynamicAnimation
-import android.support.animation.FlingAnimation
 import android.support.v7.app.AppCompatActivity
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import com.lzp.dslanimator.animSet
+import com.lzp.dslanimator.translationXAnim
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,9 +28,6 @@ class MainActivity : AppCompatActivity() {
 
             duration = 500
             interpolator = OvershootInterpolator()
-            onEnd {
-                Toast.makeText(this@MainActivity, "动画结束", Toast.LENGTH_LONG).show()
-            }
         }
     }
 
@@ -39,7 +35,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mButton.setOnClickListener {
-            anim.start()
+            if (mButton.width >= 500) {
+                anim.rewind()
+            } else {
+                anim.start()
+            }
         }
     }
 }

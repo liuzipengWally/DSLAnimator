@@ -13,7 +13,7 @@ import android.view.animation.Interpolator
  */
 open class BaseAnimator {
     var target: View? = null
-    open var values: Any? = null
+    var values: Any? = null
     var repeatCount: Int = 0
     var repeatMode: Int = ValueAnimator.RESTART
     var duration: Long = 300
