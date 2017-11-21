@@ -11,7 +11,7 @@
 ### 1、在build.gradle中添加依赖
 
 ```groovy
-compile 'com.lzp.dslanimator:dslanimator:1.0.0'
+compile 'com.lzp.dslanimator:dslanimator:1.0.1'
 ```
 
 ### 2、简单使用
@@ -144,11 +144,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mButton.setOnClickListener {
-            if (mButton.width >= 500) {
-                anim.rewind()
-            } else {
-                anim.start()
-            }
+            anim.start()
         }
     }
 }
@@ -163,4 +159,3 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-

@@ -11,9 +11,10 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -29,7 +30,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
-version = "1.0.0"
+version = "1.0.1"
 def siteUrl = 'https://github.com/550609334/DSLAnimator'    // project homepage
 def gitUrl = 'https://github.com/550609334/DSLAnimator.git' // project git
 group = "com.lzp.dslanimator"

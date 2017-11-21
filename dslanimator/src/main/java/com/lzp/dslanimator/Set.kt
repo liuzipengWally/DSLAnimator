@@ -88,18 +88,14 @@ class Set(block: Set.() -> Unit) {
         set.cancel()
     }
 
+
     /**
      * 往回播放
      */
+    @TargetApi(Build.VERSION_CODES.O)
     fun rewind() {
         set.removeAllListeners()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            set.reverse()
-        }
-//        val clazz = set::class.java
-//        val start = clazz.getDeclaredMethod("start", Boolean::class.java, Boolean::class.java)
-//        start.isAccessible = true
-//        start.invoke(set, true, true)
+        set.reverse()
     }
 
     fun onStart(onStart: (Animator) -> Unit) {

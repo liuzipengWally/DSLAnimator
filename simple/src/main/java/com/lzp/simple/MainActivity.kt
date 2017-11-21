@@ -35,11 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mButton.setOnClickListener {
-            if (mButton.width >= 500) {
-                anim.rewind()
-            } else {
-                anim.start()
-            }
+            anim.start()
         }
     }
 }
