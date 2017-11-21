@@ -150,6 +150,8 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
+![](https://raw.githubusercontent.com/550609334/DSLAnimator/master/images/DSLAnimator.gif)
+
 ### Email：[tracy550609334@gmail.com](mailto:tracy550609334@gmail.com)
 
 License Copyright 2017 liu zipeng
