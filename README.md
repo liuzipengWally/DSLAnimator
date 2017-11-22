@@ -11,7 +11,7 @@
 ### 1、在build.gradle中添加依赖
 
 ```groovy
-compile 'com.lzp.dslanimator:dslanimator:1.0.1'
+compile 'com.lzp.dslanimator:dslanimator:1.0.2'
 ```
 
 ### 2、简单使用

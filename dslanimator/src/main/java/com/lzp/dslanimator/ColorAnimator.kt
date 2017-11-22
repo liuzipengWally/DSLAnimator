@@ -14,7 +14,7 @@ class ColorAnimator : BaseAnimator() {
     var endColor: String = ""
 
     fun initAnim() {
-        if (target == null && startColor.isEmpty() && endColor.isEmpty()) return
+        if (target == null || startColor.isEmpty() || endColor.isEmpty()) return
         values = floatArrayOf(0f, 1f)
         values?.let {
             mAnimator = when (it) {
