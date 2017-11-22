@@ -1,6 +1,7 @@
 # DSLAnimator
 
 这是一个能让你在Kotlin下使用DSL的方式快速优雅的写Android动画的工具。
+该项目是一个使用Kotlin的lambda表达式与扩展函数特性封装的DSL工具，如果你有一定的Kotlin基础，并且喜欢DSL的优雅，那么这个项目会是一个不错的学习对象。
 
 ## 一、它能做什么？
 
