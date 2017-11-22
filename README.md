@@ -7,6 +7,70 @@
 
 我们在写项目的时候，必不可少的需要经常为组件加上一些过渡动画，让其在与用户交互的时候可以更生动而不会显得乏味脱节。那么DSLAnimator能做的就是让你在写动画的时候逻辑更简单清晰，而不至于让大量的动画代码去混淆了其它业务内容的阅读体验。差不多就是我们把XML配置动画的方式搬到了Kotlin代码中，并且使用过程更加一体化。 DSLAnimator的唯一特点就是它让Android动画的开发变得更简单更清晰。
 
+### 使用对比
+
+![](https://raw.githubusercontent.com/550609334/DSLAnimator/master/images/DSLAnimator.gif)
+
+##### 传统写法
+
+上图的动画让一个按钮的宽高变大，同时有一个颜色的渐变动画，在我们平时用属性动画应该是下面这么写。
+
+```kotlin
+val width = ValueAnimator.ofInt(mButton.width, 500)
+val widthParams = mButton.layoutParams
+width.addUpdateListener {
+      widthParams.width = it.animatedValue as Int
+      mButton.layoutParams = widthParams
+}
+
+val height = ValueAnimator.ofInt(mButton.height, 500)
+val heightParams = mButton.layoutParams
+      height.addUpdateListener {
+      heightParams.height = it.animatedValue as Int
+      mButton.layoutParams = heightParams
+}
+
+val color = ValueAnimator.ofFloat(0f, 1f)
+color.addUpdateListener {
+      val value = it.animatedValue as Float
+      val color = ArgbEvaluator().evaluate(value,
+                  Color.parseColor("#636978"),
+                  Color.parseColor("#1AD372")) as Int
+      mButton.setBackgroundColor(color)
+}
+
+val set = AnimatorSet()
+set.playTogether(width, height, color)
+set.duration = 500
+set.interpolator = OvershootInterpolator()
+set.start()
+```
+
+##### 使用DSL
+
+而使用了DSL的话，可以看到代码明显大量减少，并且逻辑更加清晰易懂。
+
+```kotlin
+animSet {
+   widthAnim {
+        target = mButton
+        values = intArrayOf(mButton.width, 500)
+   }
+   heightAnim {
+        target = mButton
+        values = intArrayOf(mButton.height, 500)
+   }
+   colorAnim {
+        target = mButton
+        startColor = "#636978"
+        endColor = "#1AD372"
+   }
+
+   duration = 500
+   interpolator = OvershootInterpolator()
+}.start()
+```
+
 ## 二、怎么使用？
 
 ### 1、在build.gradle中添加依赖
@@ -113,7 +177,7 @@ animSet {
 |   onEnd{}    |                 动画结束的回调                  |
 |  onUpdate{}  | 动画运行过程中，数值在更新的回调。这个lambda同样有回调一个ValueAnimator对象为参数。可提供变化的数值。 |
 
-### 5、用法建议。
+### 5、对比。
 
 使用的时候其实可以先用一个懒加载在类的头部去先声明一个动画。然后在要用到的地方去调用。这样既不会浪费资源又能把动画代码放在最外面不去干扰业务，还能动态配置动画的值。
 
@@ -150,8 +214,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-
-![](https://raw.githubusercontent.com/550609334/DSLAnimator/master/images/DSLAnimator.gif)
 
 ### Email：[tracy550609334@gmail.com](mailto:tracy550609334@gmail.com)
 
